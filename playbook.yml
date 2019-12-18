@@ -1,0 +1,15 @@
+- hosts: localhost
+
+  tasks:
+
+    - name: pull imagem do docker
+      docker_image:
+        name: gacerioni/imagem_core_devops
+
+    - name: Start the container
+      docker_container:
+        name: core_devops_app
+        image: gacerioni/imagem_core_devops
+        state: started
+        ports:
+          - "5000:5000"
